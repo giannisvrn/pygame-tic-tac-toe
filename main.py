@@ -36,35 +36,27 @@ def player_draw(player,x,y):
 
 def check_win(box_filled):
     if box_filled[0] == box_filled[1] and box_filled[1] == box_filled[2] and box_filled[0] != 0:
-        print("W1")
         pygame.draw.line(screen,(255,0,0),(133,10),(133,790),15)
         temp_won = 1
     elif box_filled[0] == box_filled[3] and box_filled[3] == box_filled[6] and box_filled[0] != 0:
-        print("W2")
         pygame.draw.line(screen,(255,0,0),(20,100),(780,100),15)
         temp_won = 1
     elif box_filled[6] == box_filled[7] and box_filled[7] == box_filled[8] and box_filled[6] != 0:
-        print("W3")
         pygame.draw.line(screen,(255,0,0),(665,10),(665,790),15)
         temp_won = 1
     elif box_filled[2] == box_filled[5] and box_filled[5] == box_filled[8] and box_filled[2] != 0:
-        print("W4")
         pygame.draw.line(screen,(255,0,0),(20,500),(780,500),15)
         temp_won = 1
     elif box_filled[0] == box_filled[4] and box_filled[4] == box_filled[8] and box_filled[0] != 0:
-        print("W5")
         pygame.draw.line(screen,(255,0,0),(20,10),(780,580),15)
         temp_won = 1
     elif box_filled[2] == box_filled[4] and box_filled[4] == box_filled[6] and box_filled[2] != 0:
-        print("W6")
         pygame.draw.line(screen,(255,0,0),(780,10),(20,580),15)
         temp_won = 1
     elif box_filled[1] == box_filled[4] and box_filled[4] == box_filled[7] and box_filled[1] != 0:
-        print("W7")
         pygame.draw.line(screen,(255,0,0),(20,300),(780,300),15)
         temp_won = 1
     elif box_filled[3] == box_filled[4] and box_filled[4] == box_filled[5] and box_filled[3] != 0:
-        print("W8")
         pygame.draw.line(screen,(255,0,0),(399,10),(399,790),15)
         temp_won = 1
     else: 
@@ -78,7 +70,7 @@ box_filled = [0,0,0,0,0,0,0,0,0]
 while True:
     left,middle,right = pygame.mouse.get_pressed()
 
-    if won != 1:
+    if won != 1 and filled != 9:
         if left:
             pos = pygame.mouse.get_pos()
             x,y = pos
@@ -87,21 +79,18 @@ while True:
 
             if x <= 266:
                 if y <= 200:
-                    print("1")
                     if box_filled[0] != 0:
                         filling = 0
                     else:
                         player_draw(player,0,0)
                         box_filled[0] = 1 + player
                 elif y <= 400:
-                    print("2")
                     if box_filled[1] != 0:
                         filling = 0
                     else:
                         player_draw(player,0,200)
                         box_filled[1] = 1 + player
                 else:
-                    print("3")
                     if box_filled[2] != 0:
                         filling = 0
                     else:
@@ -109,21 +98,18 @@ while True:
                         box_filled[2] = 1 + player
             elif x <= 532:            
                 if y <= 200:
-                    print("4")
                     if box_filled[3] != 0:
                         filling = 0
                     else: 
                         player_draw(player,266,0)
                         box_filled[3] = 1 + player
                 elif y <= 400:
-                    print("5")
                     if box_filled[4] != 0:
                         filling = 0
                     else:
                         player_draw(player,266,200)
                         box_filled[4] = 1 + player
                 else:
-                    print("6")
                     if box_filled[5] != 0:
                         filling = 0
                     else:
@@ -131,21 +117,18 @@ while True:
                         box_filled[5] = 1 + player
             else:
                 if y <= 200:
-                    print("7")
                     if box_filled[6] != 0:
                         filling = 0
                     else:
                         player_draw(player,532,0)
                         box_filled[6] = 1 + player
                 elif y <= 400:
-                    print("8")
                     if box_filled[7] != 0:
                         filling = 0
                     else:
                         player_draw(player,532,200)
                         box_filled[7] = 1 + player
                 else:
-                    print("9")
                     if box_filled[8] != 0:
                         filling = 0
                     else: 
@@ -159,7 +142,7 @@ while True:
                 player = 1 - player
                 filled = filled + 1
         if filled == 9:
-            print("End")
+            print("All boxes filled")
 
 
     for events in pygame.event.get():
