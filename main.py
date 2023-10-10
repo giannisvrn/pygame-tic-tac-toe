@@ -9,6 +9,8 @@ SCREEN_HEIGHT = 600
 
 screen = pygame.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHT))
 screen_color = (0,0,0)
+pygame.display.set_caption('Tic Tac Toe')
+font = pygame.font.Font('freesansbold.ttf', 32)
 won = 0
 
 screen.fill(screen_color)
@@ -137,11 +139,19 @@ while True:
             if filling == 1:
                 temp_won = check_win(box_filled)
                 if temp_won == 1:
+                    text = font.render('You won',True,(255,0,0),(0,0,0))
+                    textRect = text.get_rect()
+                    textRect.center = (SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2)
+                    screen.blit(text, textRect)
                     print("Player",player," Won")
                     won = 1
                 player = 1 - player
                 filled = filled + 1
         if filled == 9:
+            text = font.render('Tie',True,(255,0,0),(0,0,0))
+            textRect = text.get_rect()
+            textRect.center = (SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2)
+            screen.blit(text, textRect)
             print("All boxes filled")
 
 
